@@ -22,3 +22,9 @@ exsample : Cu + HNO3 ==> Cu(NO3)2 + NO + H2O
 
 # Test some reactions
 If you enter "test", the program will show you some reactions and balances them.
+
+# Usage 
+```
+pip install colorama
+pip install numpy
+```
