@@ -34,14 +34,9 @@ pip install colorama
 pip install numpy
 python3 balancer.py
 ```
-<br/>
-<br/>
-<br/>
 
 # Test some reactions
 If you enter "test", the program will show you some reactions and balances them.
-<br/>
-<br/>
 <br/>
 
 # Issues
