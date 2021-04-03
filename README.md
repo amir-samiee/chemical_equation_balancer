@@ -2,10 +2,10 @@
 With this program, you can solve almost any chemical equation/reaction (it has been tested on different kinds of equations/reactions) except the ones that can not be balanced or the ones that have infinite possible ways to balance.
 
 Example of impossible reactions: Ca(PO4)2 + SiO2 = P4O10 + CaSiO3  
-has 0 possible ways to balance.
+This equation has 0 possible ways to balance.
 
 Example of infinite reactions: As2S3 + NO3 + H2O = AsO4 + H + NO + S  
-can be balanced in infinite ways.
+This equation can be balanced in infinite ways.
 <br/>
 <br/>
 <br/>
@@ -40,4 +40,4 @@ If you enter "test", the program will show you some reactions and balances them.
 <br/>
 
 # Issues
-If there is any problems with the script or you need any help for runung, working with, etc. please let me know in issues section.
+If there is any problems with the script or you need any help for runung, working with, etc. please let me know in "Issues" section.
