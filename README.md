@@ -6,6 +6,10 @@ has 0 possible ways to balance.
 
 Example of infinite reactions: As2S3 + NO3 + H2O = AsO4 + H + NO + S  
 can be balanced in infinite ways.
+<br/>
+<br/>
+<br/>
+
 # How to enter my reaction?!
 You can enter your reactions in 8 different forms:
 ```
@@ -20,13 +24,25 @@ You can enter your reactions in 8 different forms:
 ```
 exsample : `Cu + HNO3 ==> Cu(NO3)2 + NO + H2O`
 (-using spaces is not secessary- example : `Cu+HNO3==>Cu(NO3)+NO+H2O`)
+<br/>
+<br/>
+<br/>
+
 # Usage 
 ```
 pip install colorama
 pip install numpy
 python3 balancer.py
 ```
+<br/>
+<br/>
+<br/>
+
 # Test some reactions
 If you enter "test", the program will show you some reactions and balances them.
+<br/>
+<br/>
+<br/>
+
 # Issues
 If there is any problems with the script or you need any help for runung, working with, etc. please let me know in issues section.
