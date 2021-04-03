@@ -2,17 +2,17 @@
 With this program, you can solve almost any chemical equation/reaction (it has been tested on different kinds of equations/reactions) except the ones that can not be balanced or the ones that have infinite possible ways to balance.
 
 Example of impossible reactions: Ca(PO4)2 + SiO2 = P4O10 + CaSiO3
-This equation has 0 possible ways to balance.
+has 0 possible ways to balance.
 
 
 Example of infinite reactions: As2S3 + NO3 + H2O = AsO4 + H + NO + S
-This equation can be balanced in infinite ways.
+can be balanced in infinite ways.
 
 
 
 # How to enter my reaction?!
 You can enter your reactions in 8 different forms:
-
+```
 1) reagents = products
 2) reagents => products
 3) reagents ==> products
@@ -21,7 +21,8 @@ You can enter your reactions in 8 different forms:
 6) reagents --> products
 7) reagents ---> products
 8) reagents → products
-exsample : Cu + HNO3 ==> Cu(NO3)2 + NO + H2O
+```
+exsample : `Cu + HNO3 ==> Cu(NO3)2 + NO + H2O`
 
 
 
