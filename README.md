@@ -5,7 +5,7 @@ Example of impossible reactions: Ca(PO4)2 + SiO2 = P4O10 + CaSiO3
 has 0 possible ways to balance.
 
 
-Example of infinite reactions: As2S3 + NO3 + H2O = AsO4 + H + NO + S
+Example of infinite reactions: As2S3 + NO3 + H2O = AsO4 + H + NO + S\n
 can be balanced in infinite ways.
 
 
@@ -23,6 +23,7 @@ You can enter your reactions in 8 different forms:
 8) reagents → products
 ```
 exsample : `Cu + HNO3 ==> Cu(NO3)2 + NO + H2O`
+(-using spaces is not secessary- example : `Cu+HNO3==>Cu(NO3)+NO+H2O`)
 
 
 
