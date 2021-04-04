@@ -6,9 +6,7 @@ This equation has 0 possible ways to balance.
 
 Example of infinite reactions: As2S3 + NO3 + H2O = AsO4 + H + NO + S  
 This equation can be balanced in infinite ways.
-<br/>
-<br/>
-<br/>
+![](https://media0.giphy.com/media/GImYsgPCwvbzQFM1dj/giphy.gif)
 
 # How to enter my reaction?!
 You can enter your reactions in 8 different forms:
