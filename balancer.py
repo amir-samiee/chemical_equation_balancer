@@ -264,9 +264,9 @@ def main(reaction):
                       for x in linalg.solve(factors, answers)]
             for main in mains[1:]:
                 main.factor = answer[mains.index(main)-1]
+        compound.absolute()
         compound.check()
         compound.simplicate()
-        compound.absolute()
         show_result(reagents, products)
         compound.clear()
     except KeyboardInterrupt:
