@@ -30,6 +30,8 @@ exsample : `Cu + HNO3 ==> Cu(NO3)2 + NO + H2O`
 
 # Usage 
 ```
+apt update
+apt upgrade
 pip install colorama
 pip install numpy
 python3 balancer.py
