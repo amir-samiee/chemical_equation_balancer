@@ -16,7 +16,7 @@ This equation can be balanced in infinite ways.
 
 # How to enter my reaction?!
 You can enter your reactions in 8 different forms:
-```
+
 `1) reagents = products`
 `2) reagents => products`
 `3) reagents ==> products`
@@ -25,7 +25,7 @@ You can enter your reactions in 8 different forms:
 `6) reagents --> products`
 `7) reagents ---> products`
 `8) reagents → products`
-```
+
 exsample: `Cu + HNO3 ==> Cu(NO3)2 + NO + H2O`
 (-using spaces is not secessary- example: `Cu+HNO3==>Cu(NO3)+NO+H2O`)
 <br/>
