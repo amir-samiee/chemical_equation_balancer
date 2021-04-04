@@ -224,7 +224,7 @@ def main(reaction):
             quit()
         elif reaction == '':
             return
-        for x in ("=", "=>", "==>", "===>", "→", "->", "-->", "--->"):
+        for x in ("--->", "-->", "->", "===>", "==>", "=>", "=", "→"):
             reaction = reaction.replace(x, '=')
         reagents, products = translate_input(*reaction.split('='))
         compound.find_suitable_elements()
@@ -250,6 +250,8 @@ def main(reaction):
             answers = []
             for main in mains:
                 main.factor = 1
+            while len(compound.unsuitables) > len(compound.all_depends()):
+                compound.unsuitables.pop()
             for unsuitable in compound.unsuitables:
                 f = []
                 answers.append(float(sum(
@@ -287,7 +289,7 @@ reactions = [
     'Hg(OH)2 + H3PO4 = Hg3(PO4)2 + H2O',
     'HClO4 + P4O10 = H3PO4 + Cl2O7',
     'CO + H2 = C8H18 + H2O',
-    'KClO3 + P4 = P4O10 + KCl',
+    'KClO3 + P4 = P4O10 + KCl',  #
     'SnO2 + H2 = Sn + H2O',
     'KOH + H3PO4 = K3PO4 + H2O',
     'KNO3 + H2CO3 = K2CO3 +  HNO3',
@@ -308,19 +310,26 @@ reactions = [
     'Fe2(SO4)3 + KOH = K2SO4 + Fe(OH)3',
     'KClO3 = KClO4 + KCl',
     'Al2(SO4)3 + Ca(OH)2 = Al(OH)3 + CaSO4',
-    'H2SO4 + HI = H2S + I2 + H2O',
+    'H2SO4 + HI = H2S + I2 + H2O',  #
     'H2C2O4 + NaOH = Na2C2O4 + H2O',
     'Cu + HNO3 = Cu(NO3)2 + NO + H2O'
 ]
 
 if __name__ == '__main__':
-    print(Fore.RED+'you can split reaction by "=" / "=>" / "==>" / "===>" / "→" / "->" / "-->" / "--->" (spaces are not necessary)\nenter "q" to exit\n'+Fore.YELLOW + 'example : Hg(OH)2 + H3PO4 = Hg3(PO4)2 + H2O\n' + Fore.GREEN + 'if you want to see some more examples, enter "test"')
+    print(
+        Fore.RED+'you can split reaction by \
+"=" / "=>" / "==>" / "===>" / "→" / "->" / "-->" / "--->" (spaces are not \
+necessary)\nenter "q" to exit\n'+Fore.YELLOW +
+        'example : Hg(OH)2 + H3PO4 = Hg3(PO4)2 + H2O\n' +
+        Fore.GREEN + 'if you want to see some more examples, enter "test"')
     while 1:
-        print(Fore.CYAN+'reaction : ' + Fore.YELLOW, end='')
+        print(Fore.CYAN+'reaction : ' +
+              Fore.YELLOW, end='')
         reaction = input()
         if reaction.upper() == 'TEST':
             for reaction in reactions:
-                print(Fore.LIGHTBLUE_EX+'reaction : ' + Fore.LIGHTWHITE_EX+reaction)
+                print(Fore.LIGHTBLUE_EX+'reaction : ' +
+                      Fore.LIGHTWHITE_EX+reaction)
                 main(reaction)
                 print(Fore.YELLOW+'------------'+Fore.RESET)
         else:
