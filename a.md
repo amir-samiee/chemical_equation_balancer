@@ -22,8 +22,8 @@ You can enter your reactions in 8 different forms:
 7) reagents ---> products
 8) reagents → products
 ```
-exsample : `Cu + HNO3 ==> Cu(NO3)2 + NO + H2O`
-(-using spaces is not secessary- example : `Cu+HNO3==>Cu(NO3)+NO+H2O`)
+exsample: `Cu + HNO3 ==> Cu(NO3)2 + NO + H2O`
+(-using spaces is not secessary- example: `Cu+HNO3==>Cu(NO3)+NO+H2O`)
 <br/>
 <br/>
 <br/>
@@ -36,7 +36,7 @@ pip install colorama
 pip install numpy
 python3 balancer.py
 ```
-(-you might need to use "sudo" command before the first 4 lines- example: `sudo apt update`,if you had stil a problem runing the program use this command:`chmod +x *`)
+(-you might need to use "sudo" command before the first 4 lines- example: `sudo apt update`,if you had stil a problem runing the program use this command: `chmod +x *`)
 
 # Test some reactions
 If you enter "test", the program will show you some reactions and balances them.
