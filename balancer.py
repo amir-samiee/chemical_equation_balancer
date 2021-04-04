@@ -317,11 +317,11 @@ reactions = [
 
 if __name__ == '__main__':
     print(
-        Fore.RED+'you can split reaction by \
+        Fore.RED+'[*] you can split reaction by \
 "=" / "=>" / "==>" / "===>" / "→" / "->" / "-->" / "--->" (spaces are not \
 necessary)\nenter "q" to exit\n'+Fore.YELLOW +
-        'example : Hg(OH)2 + H3PO4 = Hg3(PO4)2 + H2O\n' +
-        Fore.GREEN + 'if you want to see some more examples, enter "test"')
+        '[*] example : Hg(OH)2 + H3PO4 = Hg3(PO4)2 + H2O\n' +
+        Fore.GREEN + '[*] if you want to see some more examples, enter "test"')
     while 1:
         print(Fore.CYAN+'reaction : ' +
               Fore.YELLOW, end='')
