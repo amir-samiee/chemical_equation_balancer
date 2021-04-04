@@ -36,6 +36,7 @@ pip install colorama
 pip install numpy
 python3 balancer.py
 ```
+(-you might need to use "sudo" command before the first 4 lines- example: `sudo apt update`)
 
 # Test some reactions
 If you enter "test", the program will show you some reactions and balances them.
