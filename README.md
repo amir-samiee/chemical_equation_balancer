@@ -37,7 +37,6 @@ exsample: `Cu + HNO3 ==> Cu(NO3)2 + NO + H2O`
 apt update
 apt upgrade
 pip install colorama
-pip install numpy
 python3 balancer.py
 ```
 (-you might need to use "sudo" command before the first 4 lines- example: `sudo apt update`,if you had still a problem runing the program use this command: `chmod +x *`)
@@ -48,3 +47,7 @@ If you enter "test", the program will show you some reactions and balances them.
 
 # Issues
 If there is any problems with the script or you need any help for runung, working with, etc. please let me know in "Issues" section.
+
+### New Version :
+   - known bugs fixed
+   - no need to install numpy anymore
