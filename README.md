@@ -31,6 +31,13 @@ exsample: `Cu + HNO3 ==> Cu(NO3)2 + NO + H2O`
 <br/>
 
 # Usage 
+If you are not able (or don't want) to install any libraries, run these commands:
+```
+apt update
+apt upgrade
+python3 no_color.py
+```
+else:
 ```
 apt update
 apt upgrade
