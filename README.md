@@ -48,6 +48,6 @@ If you enter "test", the program will show you some reactions and balances them.
 # Issues
 If there is any problems with the script or you need any help for runung, working with, etc. please let me know in "Issues" section.
 
-### New Version :
-      - known bugs fixed
-      - no need to install numpy anymore
+- New Version :
+    - known bugs fixed
+    - no need to install numpy anymore
