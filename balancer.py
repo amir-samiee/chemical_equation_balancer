@@ -1,15 +1,89 @@
-from colorama import Fore, init
-from fractions import Fraction
-from numpy import linalg
 from math import gcd
+from fractions import Fraction as fr
+from colorama import Fore, init
 init()
+# New Version :
+#   - known bugs fixed
+#   - no need to install numpy anymore
+
+# ================ Solve The System ================ #
+
+
+class equation:
+    def __init__(self, facts, ans):
+        self.facts = facts
+        self.ans = ans
+
+    def change(self, value):
+        for q in range(len(self.facts)):
+            self.facts[q] *= value
+        self.ans *= value
+
+
+def check_sys(sys):
+    if all([len(sys) == len(x.facts) for x in sys]):
+        return True
+    return False
+
+
+def one_var(sys):
+    if not check_sys(sys):
+        raise Exception(f'check failed ! sys : {sys}')
+    if len(sys) != 1:
+        raise Exception(f'len(sys) = {len(sys)}')
+    return fr(sys[0].ans, sys[0].facts[0])
+
+
+def simplicate(sys):
+    for eq in sys[1:]:
+        eq.change(fr(sys[0].facts[-1], eq.facts[-1]))
+
+
+def system(a, b):
+    return [equation(a[c], b[c]) for c in range(len(b))]
+
+
+def one_less(sys):
+    new = []
+    c = 1
+    for eq in sys[1:]:
+        last = sys[c-1]
+        n = []
+        o = 0
+        for x in eq.facts:
+            n.append(last.facts[o]-x)
+            o += 1
+        new.append(equation(n[:-1], last.ans-eq.ans))
+        c += 1
+    return new
+
+
+def solve(sys):
+    slvd = []
+    ts = range(len(sys))
+    for _ in ts:
+        main = sys
+        while not len(main) == 1:
+            if all([x.facts[-1] != 0 for x in main]):
+                simplicate(main)
+            else:
+                for eq in main:
+                    if not eq.facts[-1] == 0:
+                        eq.change(0)
+            main = one_less(main)
+        slvd.append(one_var(main))
+        sys = [equation(x.facts[1:], x.ans-x.facts[0]*slvd[-1])
+               for x in sys[:-1]]
+    return slvd
+# ================================================== #
 
 
 class compound:
     suitables = set()
     unsuitables = set()
     all_elements = set()
-    all_compounds = []
+    all_compounds = list()
+    all_depends = list()
     includings = dict()
 
     def __init__(self, comp, _factor=1, side=None):
@@ -17,10 +91,11 @@ class compound:
         self.comp = comp
         self._factor = _factor
         self.elements = decompose(comp)
-        self._depends = {self}
         self.side = side
         for element in self.elements:
             compound.all_elements.add(element)
+        if self not in all_inside(compound.all_depends):
+            compound.all_depends.append([self])
 
     def __repr__(self):
         return f'{self.factor}{self.comp}'
@@ -34,20 +109,12 @@ class compound:
             cmp._factor = abs(cmp.factor)
 
     @classmethod
-    def all_depends(cls):
-        a = [x.depends for x in cls.all_compounds]
-        for x in a:
-            while a.count(x) > 1:
-                a.remove(x)
-        return a
-
-    @classmethod
     def simplicate(cls):
         c = m_lcm([y.denominator for y in [
                   x.factor for x in cls.all_compounds]])
         d = m_gcd([y.numerator for y in [x.factor for x in cls.all_compounds]])
         for x in compound.all_compounds:
-            x._factor = int(x._factor*Fraction(c, d))
+            x._factor = int(x._factor*fr(c, d))
 
     @classmethod
     def check(cls, print_it=True):
@@ -59,7 +126,7 @@ class compound:
                 not_balanced.append(element)
         if len(not_balanced) > 0:
             if print_it:
-                print(Fore.RED+'not balanced compounds :\r\t\t\t',
+                print(Fore.RED+'not balanced compounds :\r\t\t\t\t',
                       not_balanced, Fore.LIGHTWHITE_EX)
             return False
         if print_it:
@@ -100,32 +167,49 @@ class compound:
     @factor.setter
     def factor(self, value):
         x = self._factor
-        for comp in self._depends:
-            comp._factor *= Fraction(value, x)
+        for comp in self.depends:
+            comp._factor *= fr(value, x)
 
     @property
     def depends(self):
-        return self._depends
+        for cmps in compound.all_depends:
+            if self in cmps:
+                return cmps
 
     @depends.setter
     def depends(self, value):
-        self._depends.update(value._depends)
-        value._depends.update(self._depends)
-        for x in self._depends:
-            x._depends.update(value._depends)
-        for y in value._depends:
-            y._depends.update(self._depends)
+        p = self.depends+value.depends
+        try:
+            compound.all_depends.remove(self.depends)
+            compound.all_depends.remove(value.depends)
+        except ValueError:
+            pass
+        compound.all_depends.append(list(set(p)))
 
     @classmethod
     def clear(cls):
         cls.suitables = set()
         cls.unsuitables = set()
         cls.all_elements = set()
-        cls.balanced = []
-        cls.all_compounds = []
+        cls.all_compounds = list()
+        cls.all_depends = list()
         cls.includings = dict()
 
-# H2SO4 + HI = H2S + I2 + H2O
+
+def all_inside(b):
+    a = b.copy()
+    res = []
+    while not len(a) == 0:
+        k = len(a)
+        for x in range(k):
+            x = a[x]
+            if type(x) != list:
+                res.append(x)
+            else:
+                for y in x:
+                    a.append(y)
+        a = a[k:]
+    return res
 
 
 def decompose(cpound):
@@ -138,7 +222,8 @@ def decompose(cpound):
     limit = 0
     while not cpound == '':
         if limit == 1000:
-            raise NameError('not able to decompose your compounds!(check the limit in ".py" file)')
+            raise NameError(
+                'not able to decompose your compounds!(check the limit in ".py" file)')
         a = 0
         while cpound[a].isdigit():
             a += 1
@@ -230,18 +315,18 @@ def main(reaction):
         compound.find_suitable_elements()
         compound.find_unsuitable_elements()
         compound.update_includings()
-        for suitable in compound.suitables:  # {'H', 'C'}
+        for suitable in compound.suitables:
             a, b = compound.includings[suitable]
-            b.factor *= Fraction(a.element_factor(suitable),
-                                 b.element_factor(suitable))
+            b.factor *= fr(a.element_factor(suitable),
+                           b.element_factor(suitable))
             a.depends = b
         for cm in (x for x in compound.all_compounds if all(y in (compound.all_elements-compound.suitables) for y in x.elements)):
             for suitables_element in set(cm.elements):
-                cm.factor = Fraction((sum([x.element_factor(suitables_element) for x in compound.all_compounds if x.side != cm.side]) - sum(
+                cm.factor = fr((sum([x.element_factor(suitables_element) for x in compound.all_compounds if x.side != cm.side]) - sum(
                     [x.element_factor(suitables_element) for x in compound.all_compounds if x.side == cm.side and not x == cm])), cm.elements.count(suitables_element))
         if not compound.check(False):
             mains = []
-            for x in compound.all_depends():
+            for x in compound.all_depends:
                 x = list(x)
                 d = [reaction.find(l.comp) for l in x]
                 main = x[d.index(min(d))]
@@ -250,22 +335,22 @@ def main(reaction):
             answers = []
             for main in mains:
                 main.factor = 1
-            while len(compound.unsuitables) > len(compound.all_depends()):
+            while len(compound.unsuitables) > len(compound.all_depends):
                 compound.unsuitables.pop()
             for unsuitable in compound.unsuitables:
                 f = []
-                answers.append(float(sum(
+                answers.append(fr(sum(
                     [-x.element_factor(unsuitable) if x in reagents else x.element_factor(unsuitable)for x in mains[0].depends])))
                 for i in mains[1:]:
-                    f.append(float(sum([x.element_factor(
+                    f.append(fr(sum([x.element_factor(
                         unsuitable) if x in reagents else -x.element_factor(unsuitable) for x in i.depends])))
                 factors.append(f)
-            answer = [Fraction(x).limit_denominator()
-                      for x in linalg.solve(factors, answers)]
+            answer = [fr(x).limit_denominator()
+                        for x in solve(system(factors, answers))]
             for main in mains[1:]:
                 main.factor = answer[mains.index(main)-1]
-        compound.absolute()
         compound.check()
+        compound.absolute()
         compound.simplicate()
         show_result(reagents, products)
         compound.clear()
@@ -314,6 +399,7 @@ reactions = [
     'H2C2O4 + NaOH = Na2C2O4 + H2O',
     'Cu + HNO3 = Cu(NO3)2 + NO + H2O'
 ]
+
 
 if __name__ == '__main__':
     print(
