@@ -9,8 +9,6 @@ This equation can be balanced in infinite ways.
 <br/>
 <br/>
 
-![](https://media0.giphy.com/media/GImYsgPCwvbzQFM1dj/giphy.gif)
-
 <br/>
 <br/>
 
