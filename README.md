@@ -44,7 +44,7 @@ apt upgrade
 pip install colorama
 python3 balancer.py
 ```
-(-you might need to use "sudo" command before the first 4 lines- example: `sudo apt update`,if you had still a problem runing the program use this command: `chmod +x *`)
+(-you might need to use "sudo" command before the first 4 lines- example: `sudo apt update`,if you still had a problem runing the program use this command: `chmod +x *`)
 
 # Test some reactions
 If you enter "test", the program will show you some reactions and balances them.
