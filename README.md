@@ -8,7 +8,7 @@ Example of infinite reactions: As2S3 + NO3 + H2O = AsO4 + H + NO + S
 This equation can be balanced in infinite ways.
 <br/>
 <br/>
-
+![](GIF-210404_101444.gif)
 <br/>
 <br/>
 
