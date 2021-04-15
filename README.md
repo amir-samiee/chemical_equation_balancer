@@ -9,6 +9,7 @@ This equation can be balanced in infinite ways.
 <br/>
 <br/>
 ![](balancer_preview.png)
+![alt text](https://drive.google.com/file/d/19FWSe4A5-JJIFSyUJvV4nAK33OVNgGmN/view?usp=drivesdk)
 <br/>
 <br/>
 
