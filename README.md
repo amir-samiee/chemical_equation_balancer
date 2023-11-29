@@ -13,7 +13,7 @@ This equation can be balanced in infinite ways.
 <br/>
 
 # How to enter my reaction?
-You can enter your reactions in 8 different forms:
+You can enter your reactions in 8 different formats:
 ```
 1) reagents = products
 2) reagents => products
